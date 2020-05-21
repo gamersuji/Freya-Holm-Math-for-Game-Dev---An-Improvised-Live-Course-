@@ -10,15 +10,8 @@ public class GameController : MonoBehaviour
 
     public static void PlayEditButtonClicked(Action callback)
     {
-        if(currentGameState == GameState.Edit)
-        {
-            currentGameState = GameState.Play;
-        }
-        else if(currentGameState == GameState.Play)
-        {
-            currentGameState = GameState.Edit;
-        }
-
+        if(currentGameState == GameState.Edit) currentGameState = GameState.Play;
+        else if(currentGameState == GameState.Play) currentGameState = GameState.Edit;
         callback();
     }
 

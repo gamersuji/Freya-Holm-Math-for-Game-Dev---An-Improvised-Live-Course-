@@ -8,7 +8,6 @@ public class HealthBarUI : MonoBehaviour
 {
 
     [SerializeField]private Image healthBGImage,actualHealthImage;
-    [SerializeField]private float resultWidth;
     public static Action<Sprite> changeTex;
 
 
@@ -32,7 +31,7 @@ public class HealthBarUI : MonoBehaviour
         {
             float healthPercent = PlayerHealth.CurrentPlayerHealth / SelectableUI.PlayerMaxHealth;
 
-            float currentSpriteScale = resultWidth = healthBGImage.rectTransform.sizeDelta.x * healthPercent * SpritePerPixel();
+            float currentSpriteScale = healthBGImage.rectTransform.sizeDelta.x * healthPercent * SpritePerPixel();
 
             if (actualHealthImage.sprite.texture.width * currentSpriteScale > healthBGImage.rectTransform.sizeDelta.x) return;
             actualHealthImage.rectTransform.sizeDelta = new Vector2(actualHealthImage.sprite.texture.width * currentSpriteScale, actualHealthImage.rectTransform.sizeDelta.y);
@@ -42,8 +41,7 @@ public class HealthBarUI : MonoBehaviour
 
     private float SpritePerPixel()
     {
-        float data = 1f / actualHealthImage.sprite.texture.width;
-        return data;
+        return 1f / actualHealthImage.sprite.texture.width;
     }
 
     private void ChangeHealthTexture(Sprite sprite)
